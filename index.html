@@ -24,17 +24,61 @@
       { text: 'Nice Nice Nice!', id: 542328 }
     ];
 
+    // Displaying the data in the console
+    console.log("people array with objects for each person:");
+    console.table(people);
+    console.log("comments array with objects for each text:");
+    console.table(comments);
+    console.log("");
+    console.log("");
+
     // Some and Every Checks
     // Array.prototype.some() // is at least one person 19 or older?
+    console.log("EXERCISE #1 Is at least one person 19 or older?");
+    const currentYear = new Date().getFullYear();
+    const checkAge = function (person) {
+      const age = currentYear - person.year;
+      return age >= 19;
+    };
+    if (people.some(checkAge) === true) {
+      console.log("Yes");
+    } else {
+      console.log("No");
+    }
+    console.log("");
+    console.log("");
+
     // Array.prototype.every() // is everyone 19 or older?
+    console.log("EXERCISE #2 Is every person 19 or older?");
+    if (people.every(checkAge) === true) {
+      console.log("Yes");
+    } else {
+      console.log("No");
+    }
+    console.log("");
+    console.log("");
 
     // Array.prototype.find()
     // Find is like filter, but instead returns just the one you are looking for
     // find the comment with the ID of 823423
+    console.log("EXERCISE #3 Find the comment with the ID of 823423");
+    const findComment = function (comment) {
+      return comment.id === Number("823423");
+    }
+    const results = comments.find(findComment);
+    console.log(`"${results.text}"`);
+    console.log("");
+    console.log("");
 
     // Array.prototype.findIndex()
     // Find the comment with this ID
     // delete the comment with the ID of 823423
+    console.log("EXERCISE #4 Delete the comment with the ID of 823423");
+    const indexNum = comments.findIndex(findComment);
+    comments.splice(indexNum, 1);
+    console.table(comments);
+    console.log("");
+    console.log("");
 
   </script>
 </body>
